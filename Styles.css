@@ -1,0 +1,151 @@
+/* Asegura que todo el padding y margenes estén controlados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: white;
+    border: 5px solid #3B7D23;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Ajusta la cabecera con flexbox */
+.header {
+    display: flex;
+    justify-content: space-between; /* Mantiene logos y texto separados equitativamente */
+    align-items: center;
+    border-bottom: 2px solid #3B7D23;
+    padding-bottom: 20px;
+}
+
+/* Para que los logos no cambien de tamaño */
+.logo-left, .logo-right {
+    width: 150px; /* Establece un ancho fijo */
+    height: auto;
+    display: flex;
+    justify-content: center; /* Centra los logos dentro de sus contenedores */
+    align-items: center;
+}
+
+/* Imágenes dentro de los logos */
+.logo-left img, .logo-right img {
+    max-width: 100%; /* Asegura que la imagen no sobrepase el contenedor */
+    height: auto;
+    max-height: 80px; /* Limita la altura máxima de las imágenes */
+}
+
+.header h1 {
+    flex: 1; /* Asigna todo el espacio restante al título */
+    font-size: 24px;
+    color: #3B7D23;
+    text-align: center;
+    white-space: nowrap; /* Evita que el título se divida en varias líneas */
+}
+
+/* Para mantener las cajas de información flexibles */
+.info-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed #3B7D23;
+    padding: 10px;
+    flex: 1;
+    margin: 10px 0;
+}
+
+.box input, .box select {
+    padding: 5px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+}
+
+/* Sección de tablas */
+.tables-section {
+    margin-top: 20px;
+}
+
+.tables-section h2 {
+    background-color: #3B7D23;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table, th, td {
+    border: 1px solid #3B7D23;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+td input {
+    width: 100%;
+    max-width: 150px;
+    border: 1px solid #ccc;
+    text-align: right;
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 768px) {
+    .header {
+        flex-direction: row;
+    }
+
+    .info-boxes {
+        flex-direction: row;
+    }
+
+    .box {
+        margin: 0 10px;
+    }
+
+    td input {
+        width: 80%;
+    }
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .box input, .box select {
+        max-width: 150px;
+    }
+
+    td input {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}

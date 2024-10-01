@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Precio Final</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header class="header">
+            <div class="logo-left">
+                <img src="Logo Bamesa Consulting.png" alt="Bamesa Consulting Logo">
+            </div>
+            <h1>GALP - CALCULADORA PRECIO</h1>
+            <div class="logo-right">
+                <img src="logo.png" alt="Galp Energia Logo">
+            </div>
+        </header>
+
+        <!-- Cajas de información -->
+        <section class="info-boxes">
+            <div class="box">
+                <label for="tarifa">TARIFA:</label>
+                <select id="tarifa">
+                    <option value="2.0TD" selected>2.0TD</option>
+                    <option value="3.0TD">3.0TD</option>
+                    <option value="6.1TD">6.1TD</option>
+                </select>
+            </div>
+            <div class="box">
+                <label for="consumo">CONSUMO KWh:</label>
+                <input type="number" id="consumo" placeholder="80000">
+            </div>
+            <div class="box">
+                <label for="fee">FEE MAX 15 €/MWh:</label>
+                <input type="number" id="fee" placeholder="10">
+            </div>
+            <div class="box">
+                <label for="mes">MES:</label>
+                <select id="mes">
+                    <option value="SEPTIEMBRE" selected>SEPTIEMBRE</option>
+                    <option value="OCTUBRE">OCTUBRE</option>
+                    <option value="NOVIEMBRE">NOVIEMBRE</option>
+                    <option value="DICIEMBRE">DICIEMBRE</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Tablas de precios -->
+        <section class="tables-section">
+            <h2>PRECIO ENERGÍA</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>P1</th>
+                        <th>P2</th>
+                        <th>P3</th>
+                        <th>P4</th>
+                        <th>P5</th>
+                        <th>P6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12 MESES FIJO</td>
+                        <td><input type="text" id="energia_12_p1" disabled></td>
+                        <td><input type="text" id="energia_12_p2" disabled></td>
+                        <td><input type="text" id="energia_12_p3" disabled></td>
+                        <td><input type="text" id="energia_12_p4" disabled></td>
+                        <td><input type="text" id="energia_12_p5" disabled></td>
+                        <td><input type="text" id="energia_12_p6" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>24 MESES FIJO</td>
+                        <td><input type="text" id="energia_24_p1" disabled></td>
+                        <td><input type="text" id="energia_24_p2" disabled></td>
+                        <td><input type="text" id="energia_24_p3" disabled></td>
+                        <td><input type="text" id="energia_24_p4" disabled></td>
+                        <td><input type="text" id="energia_24_p5" disabled></td>
+                        <td><input type="text" id="energia_24_p6" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>36 MESES FIJO</td>
+                        <td><input type="text" id="energia_36_p1" disabled></td>
+                        <td><input type="text" id="energia_36_p2" disabled></td>
+                        <td><input type="text" id="energia_36_p3" disabled></td>
+                        <td><input type="text" id="energia_36_p4" disabled></td>
+                        <td><input type="text" id="energia_36_p5" disabled></td>
+                        <td><input type="text" id="energia_36_p6" disabled></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>PRECIO POTENCIA</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>P1</th>
+                        <th>P2</th>
+                        <th>P3</th>
+                        <th>P4</th>
+                        <th>P5</th>
+                        <th>P6</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12 MESES FIJO</td>
+                        <td><input type="text" id="potencia_12_p1" disabled></td>
+                        <td><input type="text" id="potencia_12_p2" disabled></td>
+                        <td><input type="text" id="potencia_12_p3" disabled></td>
+                        <td><input type="text" id="potencia_12_p4" disabled></td>
+                        <td><input type="text" id="potencia_12_p5" disabled></td>
+                        <td><input type="text" id="potencia_12_p6" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>24 MESES FIJO</td>
+                        <td><input type="text" id="potencia_24_p1" disabled></td>
+                        <td><input type="text" id="potencia_24_p2" disabled></td>
+                        <td><input type="text" id="potencia_24_p3" disabled></td>
+                        <td><input type="text" id="potencia_24_p4" disabled></td>
+                        <td><input type="text" id="potencia_24_p5" disabled></td>
+                        <td><input type="text" id="potencia_24_p6" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>36 MESES FIJO</td>
+                        <td><input type="text" id="potencia_36_p1" disabled></td>
+                        <td><input type="text" id="potencia_36_p2" disabled></td>
+                        <td><input type="text" id="potencia_36_p3" disabled></td>
+                        <td><input type="text" id="potencia_36_p4" disabled></td>
+                        <td><input type="text" id="potencia_36_p5" disabled></td>
+                        <td><input type="text" id="potencia_36_p6" disabled></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
