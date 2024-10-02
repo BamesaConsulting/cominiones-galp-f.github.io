@@ -1,5 +1,6 @@
 
-let excelData = []
+let excelData = [];
+
 window.onload = function() {
     fetch('data.xlsx')
         .then(response => response.arrayBuffer())
@@ -12,12 +13,26 @@ window.onload = function() {
 
             // Convertir a JSON
             excelData = XLSX.utils.sheet_to_json(worksheet);
-    
-               
-            // Asignar los valores de Excel a los inputs de la tabla
+            console.log(excelData)
+            // Extraer los valores de la columna "Mes"
+            const meses = excelData.map(row => row["MES"]);  // Asegúrate de que "Mes" coincida con el nombre de la columna en tu Excel
+            const mesesUnicos = [...new Set(meses)]; // Eliminar duplicados usando Set
+
+            // Actualizar el <select> con id="mes"
+            const selectMes = document.getElementById('mes');
+            selectMes.innerHTML = ''; // Limpiar cualquier opción existente
+
+            // Añadir las opciones dinámicamente
+            mesesUnicos.forEach(mes => {
+                const option = document.createElement('option');
+                option.value = mes;
+                option.textContent = mes;
+                selectMes.appendChild(option);
+            });
         })
         .catch(error => console.error('Error al cargar el archivo Excel:', error));
 };
+
 // Este es un ejemplo básico de cómo podrías empezar a llenar los campos calculados
 document.getElementById('tarifa').addEventListener('change', calcular);
 document.getElementById('mes').addEventListener('change', calcular);
